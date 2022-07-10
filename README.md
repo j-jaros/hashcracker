@@ -20,7 +20,7 @@ You know that passwords are hashed and not salted. Unfortunately, you do not kno
 
 This is where HashCracker comes in.
 
-![HashCracker_demo1](https://i.ibb.co/wrfXfbp/HC1.png)
+![HashCracker_demo1](https://i.ibb.co/wrfXfbp/HC1.png)\
 You run the script, then paste the hash from the leak and wait about 10 seconds (more about this in the technical information)
 and voilà! 
 You know the password that allows you to log in to the administrator account and redirect the delivery.
