@@ -1,6 +1,6 @@
 """
 HashCracker is educational bruteforce software to crack passwords.
-To work properly you need to change content of passwords.txt.
+To work properly you need to add passwords to passwords.txt.
 \nEach password should be in separate lines.
 
 HashCracker works by hashing passwords from passwords.txt one by one and comparing results with hash given by user.
@@ -25,9 +25,7 @@ class Crack:
 |_||_/_/ \_\___/_||_|\___|_|_\/_/ \_\___|_|\_\___|_|_\\\033[0m""")  # Welcome ASCII art
         print("Version: \033[92m0.1\n\033[0mDeveloped by \033[96mJulian Jaros \033[0mhttps://github.com/j-jaros")  # Author information
 
-        path = os.path.exists("passwords.txt")  # Check if passwords file exists
-
-        if path:
+        if os.path.exists("passwords.txt"):
             pass
         else:
             print("\033[91mCouldn't detect password file.\033[0m")
@@ -96,7 +94,7 @@ class Crack:
             count = 0
             founded = False
             start_time = time.time()
-            print(f"\n\033[93mEstimate cracking time: \033[94m{password_amount*0.000006901} \033[93mseconds\033[0m")
+            print(f"\n\033[93mEstimate cracking time: \033[94m{round(password_amount*0.000006901, 3)} \033[93mseconds\033[0m")
             for password in self.password_list:
                 count += 1
                 print(f"\r\033[93mProgress: \033[94m{count}\033[93m/\033[94m{password_amount}\033[0m", end="")
@@ -106,9 +104,11 @@ class Crack:
                     founded = True
                     break
             end_time = time.time()
+            with open("timesPYCHARM.txt", "a+") as d:
+                d.write(f"{end_time-start_time}\n")
             if founded:
                 print(f"\n\033[92mPassword cracked! Result: \033[95m{temp_password}\033[0m")
-                print(f"\n\033[93mCracking completed in \033[94m{end_time - start_time} \033[93mseconds\033[0m")
+                print(f"\n\033[93mCracking completed in \033[94m{round(end_time - start_time, 3)} \033[93mseconds\033[0m")
                 input("\nPress enter to exit")
                 exit()
             else:
@@ -120,7 +120,6 @@ class Crack:
             print(f"\033[91mException occurred during password crack: {ex}\033[0m")
             input("Press enter to exit")
             exit()
-
 
 if __name__ == "__main__":
     crack = Crack()
