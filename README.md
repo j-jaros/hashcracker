@@ -40,9 +40,9 @@ Creating a list of passwords is done by reading the dictionary with passwords an
 #### 4. Cracking the password
 Cracking the password is done by reading each item from the list, hashing it and comparing it with the base hash (the hash entered by the user)
 If the hashes are identical, the currently selected item from the list will be displayed as a cracked password
-```diff
--HashCracker works only with nonsalted hashes!
-```
+
+HashCracker works only with nonsalted hashes!
+
 ## Technical information
 #### Password dictionary requirements
 ```
